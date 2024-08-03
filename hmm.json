@@ -40,7 +40,7 @@
     {
       "name": "polymod ",
       "type": "haxelib",
-      "version": null 
+      "version": 1.8.0
     },
     {
       "name": "discord_rpc",
