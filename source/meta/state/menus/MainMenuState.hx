@@ -299,7 +299,7 @@ class MainMenuState extends MusicBeatState
 						submenuGroup.visible = false;
 					}
 					
-					if (FlxG.keys.pressed.L && FlxG.keys.pressed.R)
+					if (controls.L && controls.R)
 					{
 						mario.animation.play("die");
 
