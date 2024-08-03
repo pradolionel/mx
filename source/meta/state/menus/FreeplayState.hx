@@ -157,7 +157,7 @@ class FreeplayState extends MusicBeatState
 		var cursor = new FlxSprite();
 		cursor.makeGraphic(15, 15, FlxColor.TRANSPARENT);
 
-		FlxG.mouse.load(cursor.pixels);
+		//FlxG.mouse.load(cursor.pixels);
 
 		// LOAD CHARACTERS
 
@@ -317,7 +317,7 @@ class FreeplayState extends MusicBeatState
 				grpText = "???";
 
 			secretGroup.visible = (selectedCategory == -1) ? true : false;
-			FlxG.mouse.visible = (selectedCategory == -1) ? true : false;
+			//FlxG.mouse.visible = (selectedCategory == -1) ? true : false;
 
 			grpName.text = grpText;
 			grpName.updateHitbox();
@@ -402,9 +402,9 @@ class FreeplayState extends MusicBeatState
 		{
 			// secret door
 			var rect = new FlxRect(secretDoor.x, secretDoor.y, secretDoor.width, secretDoor.height);
-			if (FlxMath.pointInFlxRect(FlxG.mouse.screenX, FlxG.mouse.screenY, rect))
+			//if (FlxMath.pointInFlxRect(FlxG.mouse.screenX, FlxG.mouse.screenY, rect))
 			{
-				if (FlxG.mouse.justPressed)
+				//if (FlxG.mouse.justPressed)
 				{
 					if (secretCount >= 10)
 						return;
