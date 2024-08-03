@@ -175,7 +175,7 @@ class ChartingState extends MusicBeatState
 				vocals.pause();
 				// playButtonAnimation('pause');
 			}
-			else
+			//else
 			{
 				vocals.play();
 				songMusic.play();
