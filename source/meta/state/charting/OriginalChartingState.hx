@@ -1,6 +1,7 @@
 package meta.state.charting;
 
 import flixel.FlxSprite;
+import flixel.FlxG
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUI9SliceSprite;
