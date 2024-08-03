@@ -2,6 +2,7 @@ package meta.state.menus;
 
 import flixel.FlxBasic;
 import flixel.FlxG;
+import flixel.FlxKeyboard
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
@@ -299,7 +300,7 @@ class MainMenuState extends MusicBeatState
 						submenuGroup.visible = false;
 					}
 					
-					if (controls.justPressed.L && controls.justPressed.R)
+					if (FlxG.keys.pressed.L && FlxG.keys.pressed.R)
 					{
 						mario.animation.play("die");
 
