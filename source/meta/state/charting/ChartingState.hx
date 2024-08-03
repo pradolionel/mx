@@ -1,8 +1,15 @@
 package meta.state.charting;
 
+package states.editors;
+
+//pablo
+import flash.geom.Rectangle;
+import haxe.Json;
+import haxe.format.JsonParser;
+import haxe.io.Bytes;
+
 import flixel.FlxBasic;
 import flixel.FlxCamera;
-import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxBackdrop;
@@ -21,7 +28,7 @@ import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.system.FlxSound;
-import flixel.text.FlxText;
+import flixel.\.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
@@ -29,8 +36,9 @@ import gameObjects.*;
 import gameObjects.userInterface.*;
 import gameObjects.userInterface.notes.*;
 import gameObjects.userInterface.notes.Strumline.UIStaticArrow;
+import flash.geom.Rectangle;
 import haxe.Json;
-import haxe.io.Bytes;
+import haxe.format;
 import lime.media.AudioBuffer;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
@@ -61,8 +69,8 @@ class ChartingState extends MusicBeatState
 {
 	var _song:SwagSong;
 
-	//var songMusic:FlxSound;
-	//var vocals:FlxSound;
+	var songMusic:FlxSound;
+	var vocals:FlxSound;
 	private var keysTotal = 8;
 
 	var strumLine:FlxSprite;
@@ -159,23 +167,23 @@ class ChartingState extends MusicBeatState
 
 		FlxG.camera.follow(strumLineCam);
 
-		//FlxG.mouse.useSystemCursor = false; // Use system cursor because it's prettier
-		//FlxG.mouse.visible = true; // Hide mouse on start 
+		FlxG.mouse.useSystemCursor = false; // Use system cursor because it's prettier
+		FlxG.mouse.visible = true; // Hide mouse on start
 	}
 
 	var hitSoundsPlayed:Array<Note> = [];
 
 	override public function update(elapsed:Float)
 	{
-		//if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE)
 		{
-			//if (songMusic.playing)
+			if (songMusic.playing)
 			{
 				songMusic.pause();
 				vocals.pause();
 				// playButtonAnimation('pause');
 			}
-			//else
+			else
 			{
 				vocals.play();
 				songMusic.play();
@@ -188,18 +196,18 @@ class ChartingState extends MusicBeatState
 		}
 
 		var scrollSpeed:Float = 0.75;
-		//if (FlxG.mouse.wheel != 0)
+		if (FlxG.mouse.wheel != 0)
 		{
-			//songMusic.pause();
-			//vocals.pause();
+			songMusic.pause();
+			vocals.pause();
 
-			//songMusic.time = Math.max(songMusic.time - (FlxG.mouse.wheel * Conductor.stepCrochet * scrollSpeed), 0);
-			//songMusic.time = Math.min(songMusic.time, songMusic.length);
-			//vocals.time = songMusic.time;
+			songMusic.time = Math.max(songMusic.time - (FlxG.mouse.wheel * Conductor.stepCrochet * scrollSpeed), 0);
+			songMusic.time = Math.min(songMusic.time, songMusic.length);
+			vocals.time = songMusic.time;
 		}
 
 		// strumline camera stuffs!
-		//Conductor.songPosition = songMusic.time;
+		Conductor.songPosition = songMusic.time;
 
 		strumLine.y = getYfromStrum(Conductor.songPosition);
 		strumLineCam.y = strumLine.y + (FlxG.height / 3);
@@ -211,10 +219,10 @@ class ChartingState extends MusicBeatState
 		super.update(elapsed);
 
 		///*
-		//if (FlxG.mouse.x > (fullGrid.x)
-			//&& FlxG.mouse.x < (fullGrid.x + fullGrid.width)
-			//&& FlxG.mouse.y > 0
-			//&& FlxG.mouse.y < (getYfromStrum(songMusic.length)))
+		if (FlxG.mouse.x > (fullGrid.x)
+			&& FlxG.mouse.x < (fullGrid.x + fullGrid.width)
+			&& FlxG.mouse.y > 0
+			&& FlxG.mouse.y < (getYfromStrum(songMusic.length)))
 		{
 			var fakeMouseX = FlxG.mouse.x - fullGrid.x;
 			dummyArrow.x = (Math.floor((fakeMouseX) / gridSize) * gridSize) + fullGrid.x;
@@ -275,12 +283,12 @@ class ChartingState extends MusicBeatState
 		}
 		// */
 
-		// if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER)
 		{
-			//songPosition = songMusic.time;
+			songPosition = songMusic.time;
 
 			PlayState.SONG = _song;
-			//ForeverTools.killMusic([songMusic, vocals]);
+			ForeverTools.killMusic([songMusic, vocals]);
 			Main.switchState(this, new PlayState());
 		}
 	}
@@ -311,12 +319,12 @@ class ChartingState extends MusicBeatState
 
 	function getStrumTime(yPos:Float):Float
 	{
-		//return FlxMath.remapToRange(yPos, 0, (songMusic.length / Conductor.stepCrochet) * gridSize, 0, songMusic.length);
+		return FlxMath.remapToRange(yPos, 0, (songMusic.length / Conductor.stepCrochet) * gridSize, 0, songMusic.length);
 	}
 
 	function getYfromStrum(strumTime:Float):Float
 	{
-		//return FlxMath.remapToRange(strumTime, 0, songMusic.length, 0, (songMusic.length / Conductor.stepCrochet) * gridSize);
+		return FlxMath.remapToRange(strumTime, 0, songMusic.length, 0, (songMusic.length / Conductor.stepCrochet) * gridSize);
 	}
 
 	var fullGrid:FlxTiledSprite;
@@ -332,8 +340,8 @@ class ChartingState extends MusicBeatState
 		fullGrid.loadGraphic(base.graphic);
 		fullGrid.screenCenter(X);
 
-		// fullgrid height 
-		//fullGrid.heig ht = (songMusic.length / Conductor.stepCrochet) * gridSize;
+		// fullgrid height
+		fullGrid.height = (songMusic.length / Conductor.stepCrochet) * gridSize;
 
 		add(fullGrid);
 	}
@@ -452,7 +460,7 @@ class ChartingState extends MusicBeatState
 
 		pauseMusic();
 
-		//songMusic.onComplete = function()
+		songMusic.onComplete = function()
 		{
 			ForeverTools.killMusic([songMusic, vocals]);
 			loadSong(daSong);
@@ -531,7 +539,6 @@ class ChartingState extends MusicBeatState
 		coolGradient.alpha = (32 / 255);
 		add(coolGradient);
 	}
-	
 
 	function adjustSide(noteData:Int, sectionTemp:Bool)
 	{
@@ -539,13 +546,13 @@ class ChartingState extends MusicBeatState
 	}
 
 	function pauseMusic()
-	 {
-		//songMusic.time = Math.max(songMusic.time, 0);
-		//songMusic.time =  Math.min(songMusic.time, songMusic.length);
+	{
+		songMusic.time = Math.max(songMusic.time, 0);
+		songMusic.time = Math.min(songMusic.time, songMusic.length);
 
 		resyncVocals();
-		//songMusic.pause();
-		//vocals.pause();
+		songMusic.pause();
+		vocals.pause();
 	}
 
 	function resyncVocals():Void
@@ -553,7 +560,7 @@ class ChartingState extends MusicBeatState
 		vocals.pause();
 
 		songMusic.play();
-		 Conductor.songPosition = songMusic.time;
+		Conductor.songPosition = songMusic.time;
 		vocals.time = Conductor.songPosition;
 		vocals.play();
 	}
