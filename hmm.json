@@ -1,4 +1,4 @@
-     {
+       {
   "dependencies": [
     {
       "name": "openfl",
@@ -38,9 +38,9 @@
       "version": "1.4.0"
     },
     {
-      "name": "tjson",
+      "name": "polymod ",
       "type": "haxelib",
-      "version": "1.4.0"
+      "version": null 
     },
     {
       "name": "discord_rpc",
