@@ -38,7 +38,12 @@
       "version": "1.4.0"
     },
     {
-      "name": "hxdiscord_rpc",
+      "name": "tjson",
+      "type": "haxelib",
+      "version": "1.4.0"
+    },
+    {
+      "name": "discord_rpc",
       "type": "haxelib",
       "version": null
     },
