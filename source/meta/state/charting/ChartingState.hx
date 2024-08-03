@@ -1,4 +1,4 @@
-package meta.state.charting;
+   package meta.state.charting;
 
 import flixel.FlxBasic;
 import flixel.FlxCamera;
@@ -61,8 +61,8 @@ class ChartingState extends MusicBeatState
 {
 	var _song:SwagSong;
 
-	var songMusic:FlxSound;
-	var vocals:FlxSound;
+	//var songMusic:FlxSound;
+	//var vocals:FlxSound;
 	private var keysTotal = 8;
 
 	var strumLine:FlxSprite;
@@ -552,7 +552,7 @@ class ChartingState extends MusicBeatState
 		vocals.pause();
 
 		songMusic.play();
-		Conductor.songPosition = songMusic.time;
+		 Conductor.songPosition = songMusic.time;
 		vocals.time = Conductor.songPosition;
 		vocals.play();
 	}
