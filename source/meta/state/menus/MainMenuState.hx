@@ -1,10 +1,9 @@
  package meta.state.menus;
 
 import flixel.FlxBasic;
-import flixel.FlxG;
+import flixel.FlxG.keys;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.FlxG.keys;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
