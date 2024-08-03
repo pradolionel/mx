@@ -6,12 +6,12 @@
       "version": "9.3.2" 
     },
     {
-      "name": "flixel",
+      "name": "hscript",
       "type": "haxelib",
-      "version": "5.5.0"
+      "version": "2.5.0"
     },
     {
-      "name": "flixel",
+      "name": "flixel ",
       "type": "haxelib",
       "version": "5.5.0"
     },
