@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxKeyboard;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.FlxKeyboard;
 import flixel.input.keyboard;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
