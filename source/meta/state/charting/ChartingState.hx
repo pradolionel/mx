@@ -159,8 +159,8 @@ class ChartingState extends MusicBeatState
 
 		FlxG.camera.follow(strumLineCam);
 
-		FlxG.mouse.useSystemCursor = false; // Use system cursor because it's prettier
-		FlxG.mouse.visible = true; // Hide mouse on start
+		//FlxG.mouse.useSystemCursor = false; // Use system cursor because it's prettier
+		//FlxG.mouse.visible = true; // Hide mouse on start 
 	}
 
 	var hitSoundsPlayed:Array<Note> = [];
