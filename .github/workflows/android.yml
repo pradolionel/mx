@@ -1,51 +1,51 @@
-  on: [workflow_dispatch]
-  jobs:
-    buildMX:
+on: [workflow_dispatch]
+jobs:
+  buildMX:
 
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-          with:
-          submodules: true
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: true
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '11'
 
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1
-        with:
-          haxe-version: 4.3.4
+    - name: Setup Haxe
+      uses: krdlab/setup-haxe@v1
+      with:
+        haxe-version: 4.3.4
 
-      - name: Install Libraries
-        run: |
+    - name: Install Libraries
+      run: |
           haxelib install lime 7.8.0
           haxelib git openfl https://github.com/openfl/openfl
           haxelib install flixel 4.8.1
-          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
+          haxelib git hxcpp https://github.com/haxefoundation/hxcpp
           haxelib git flixel-tools https://github.com/haxeflixel/flixel-tools
           haxelib install flixel-ui 2.5.0
           haxelib install flixel-addons 2.9.0
           haxelib git hscript https://github.com/haxefoundation/hscript
           haxelib git faxe https://github.com/ashea-code/faxe
           haxelib git polymod https://github.com/larsiusprime/polymod
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib git discord_rpc https://github.com/aidan63/linc_discord-rpc
           haxelib git hxcpp-debug-server https://github.com/vshaxe/hxcpp-debugger
-      - name: Configure Android
-        run: |
+    - name: Configure Android
+      run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
-      - name: Compile
-        run: haxelib run lime build android
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: mx
-          path: export/release/android/bin/app/build/outputs/apk/debug
-          if-no-files-found: error
+    - name: Compile
+      run: haxelib run lime build android
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: mx
+        path: export/release/android/bin/app/build/outputs/apk/debug
+        if-no-files-found: error
