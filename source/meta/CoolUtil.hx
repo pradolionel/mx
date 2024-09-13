@@ -5,9 +5,9 @@ import meta.state.PlayState;
 
 using StringTools;
 
-#if !html5
+/*#if !html5
 import sys.FileSystem;
-#end
+#end*/
 
 class CoolUtil
 {
@@ -64,7 +64,7 @@ class CoolUtil
 	{
 		//
 		var libraryArray:Array<String> = [];
-		#if !html5
+		/*#if !html5
 		var unfilteredLibrary = FileSystem.readDirectory('$subDir/$library');
 		trace(unfilteredLibrary);
 
@@ -76,7 +76,7 @@ class CoolUtil
 			libraryArray.push(folder);
 		}
 		trace(libraryArray);
-		#end
+		#end*/
 
 		return libraryArray;
 	}
