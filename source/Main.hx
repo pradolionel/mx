@@ -144,8 +144,8 @@ class Main extends Sprite
 		// if you've used gamemaker you'll probably understand the term surface better
 		// this defines the surface bounds
 
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
+		/*var stageWidth:Int = Lib.current.stage.stageWidth;
+		var stageHeight:Int = Lib.current.stage.stageHeight;*/
 
 		if (zoom == -1)
 		{
@@ -167,10 +167,10 @@ class Main extends Sprite
 		// addChild(new FPS(10, 3, 0xFFFFFF));
 
 		// begin the discord rich presence
-		#if !html5
+		/*#if !html5
 		Discord.initializeRPC();
 		Discord.changePresence('');
-		#end
+		#end*/
 
 		// test initialising the player settings
 		PlayerSettings.init();
