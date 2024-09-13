@@ -22,6 +22,7 @@ jobs:
           haxelib git openfl https://github.com/openfl/openfl
           haxelib install flixel 4.11.0
           haxelib git hxcpp https://github.com/haxefoundation/hxcpp
+          haxelib run hxcpp install
           haxelib git flixel-tools https://github.com/haxeflixel/flixel-tools
           haxelib install flixel-ui 2.5.0
           haxelib install flixel-addons 2.11.0
@@ -30,14 +31,6 @@ jobs:
           haxelib git polymod https://github.com/larsiusprime/polymod
           haxelib git discord_rpc https://github.com/aidan63/linc_discord-rpc
           haxelib git hxcpp-debug-server https://github.com/vshaxe/hxcpp-debugger
-    - name: Install HXCPP
-      run: |
-          REPO=$(pwd)
-          cd ${REPO}/tools/run
-          haxe compile.hxml
-          cd ${REPO}/tools/hxcpp
-          haxe compile.hxml
-          cd $REPO
     - name: Configure Android
       run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
