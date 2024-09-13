@@ -113,9 +113,9 @@ class FreeplayState extends MusicBeatState
 		// LOAD MUSIC
 		ForeverTools.playFreeplayMusic();
 
-		#if !html5
+		/*#if !html5
 		Discord.changePresence('FREEPLAY MENU', 'Main Menu');
-		#end
+		#end*/
 
 		// SECRET STUFF
 		secretGroup = new FlxTypedGroup<FlxSprite>();
