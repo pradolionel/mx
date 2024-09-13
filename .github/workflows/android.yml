@@ -22,7 +22,7 @@ jobs:
           haxelib git openfl https://github.com/openfl/openfl
           haxelib install flixel 4.11.0
           haxelib git hxcpp https://github.com/haxefoundation/hxcpp
-          haxelib run hxcpp install
+          haxelib run lime rebuild hxcpp
           haxelib git flixel-tools https://github.com/haxeflixel/flixel-tools
           haxelib install flixel-ui 2.5.0
           haxelib install flixel-addons 2.11.0
