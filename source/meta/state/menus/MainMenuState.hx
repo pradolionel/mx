@@ -99,9 +99,9 @@ class MainMenuState extends MusicBeatState
 		// make sure the music is playing
 		ForeverTools.resetMenuMusic();
 
-		#if !html5
+		/*#if !html5
 		Discord.changePresence('MENU SCREEN', 'Main Menu');
-		#end
+		#end*/
 
 		persistentUpdate = persistentDraw = true;
 		submenuGroup = new FlxTypedGroup<FlxBasic>();
