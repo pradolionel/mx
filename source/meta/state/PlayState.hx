@@ -45,9 +45,9 @@ import flixel.addons.plugin.screengrab.FlxScreenGrab;
 
 using StringTools;
 
-#if !html5
+/*#if !html5
 import meta.data.dependency.Discord;
-#end
+#end*/
 
 class PlayState extends MusicBeatState
 {
@@ -2057,7 +2057,7 @@ class PlayState extends MusicBeatState
 
 	public static function updateRPC(pausedRPC:Bool)
 	{
-		#if !html5
+		/*#if !html5
 		var displayRPC:String = (pausedRPC) ? detailsPausedText : songDetails.toUpperCase();
 
 		if (health > 0 && gbHealth > 0)
@@ -2067,7 +2067,7 @@ class PlayState extends MusicBeatState
 			else
 				Discord.changePresence(displayRPC, detailsSub, iconRPC);
 		}
-		#end
+		#end*/
 	}
 
 	var animationsPlay:Array<Note> = [];
