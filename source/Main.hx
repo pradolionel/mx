@@ -149,11 +149,12 @@ class Main extends Sprite
 
 		if (zoom == -1)
 		{
-			var ratioX:Float = stageWidth / gameWidth;
-			var ratioY:Float = stageHeight / gameHeight;
-			zoom = Math.min(ratioX, ratioY);
-			gameWidth = Math.ceil(stageWidth / zoom);
-			gameHeight = Math.ceil(stageHeight / zoom);
+			//var ratioX:Float = stageWidth / gameWidth;
+			//var ratioY:Float = stageHeight / gameHeight;
+			//zoom = Math.min(ratioX, ratioY);
+			zoom = 1;
+			//gameWidth = Math.ceil(stageWidth / zoom);
+			//gameHeight = Math.ceil(stageHeight / zoom);
 			// this just kind of sets up the camera zoom in accordance to the surface width and camera zoom.
 			// if set to negative one, it is done so automatically, which is the default.
 		}
